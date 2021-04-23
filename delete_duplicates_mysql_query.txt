@@ -1,0 +1,5 @@
+delete
+from tbl_supplier_types using tbl_supplier_types,
+    tbl_supplier_types e1
+where tbl_supplier_types.id > e1.id
+    and tbl_supplier_types.name = e1.name and tbl_supplier_types.description = e1.description and tbl_supplier_types.branch_id = e1.branch_id and tbl_supplier_types.is_active = e1.is_active
