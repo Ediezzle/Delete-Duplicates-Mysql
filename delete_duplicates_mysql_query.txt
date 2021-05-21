@@ -3,3 +3,7 @@ from tbl_supplier_types using tbl_supplier_types,
     tbl_supplier_types e1
 where tbl_supplier_types.id > e1.id
     and tbl_supplier_types.name = e1.name and tbl_supplier_types.description = e1.description and tbl_supplier_types.branch_id = e1.branch_id and tbl_supplier_types.is_active = e1.is_active
+    
+OR
+
+DELETE t1 FROM tbl_task_ergonomic_category t1 INNER JOIN tbl_task_ergonomic_category t2 WHERE t1.id < t2.id AND t1.branch_id = t2.branch_id and t1.type_name = t2.type_name and t1.description = t2.description and t1.is_active = t2.is_active
