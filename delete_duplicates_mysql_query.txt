@@ -7,3 +7,22 @@ where tbl_supplier_types.id > e1.id
 OR
 
 DELETE t1 FROM tbl_task_ergonomic_category t1 INNER JOIN tbl_task_ergonomic_category t2 WHERE t1.id < t2.id AND t1.branch_id = t2.branch_id and t1.type_name = t2.type_name and t1.description = t2.description and t1.is_active = t2.is_active
+
+OR
+
+-- step 1
+CREATE TABLE contacts_temp 
+LIKE contacts;
+
+-- step 2
+INSERT INTO contacts_temp
+SELECT * 
+FROM contacts 
+GROUP BY email;
+
+
+-- step 3
+DROP TABLE contacts;
+
+ALTER TABLE contacts_temp 
+RENAME TO contacts;
